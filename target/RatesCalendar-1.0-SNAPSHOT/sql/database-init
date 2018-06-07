@@ -1,6 +1,6 @@
 CREATE TABLE `rate` (
     `idrate` int(11) auto_increment,
-    `rate` double DEFAULT NULL,
+    `ratevalue` double DEFAULT NULL,
     `uniqueref` varchar(20) DEFAULT NULL,
     `startdate` date DEFAULT NULL,
     `enddate` date DEFAULT NULL,
@@ -9,7 +9,8 @@ CREATE TABLE `rate` (
     `currency` varchar(20) DEFAULT NULL,
     `transfertime` int DEFAULT NULL,
     `vehicletype` varchar(50) DEFAULT NULL,
-    `deleted` bit(1) NULL DEFAULT 0,
+    `inactive` bit(1) NULL DEFAULT 0,
+    `IATA` varchar(20) DEFAULT NULL,
     PRIMARY KEY (`idrate`)
 )Engine=InnoDB DEFAULT CHARSET=utf8;
 
@@ -22,3 +23,15 @@ INSERT INTO rate VALUES(6, 15.20, '1000-abc-06',DATE '2018-06-01',DATE '2018-06-
 INSERT INTO rate VALUES(7, 15.20, '1000-abc-07',DATE '2018-07-01',DATE '2018-07-30', 'Sydney airport', 'Destination G','USD',15,'Private Transfer',0);
 INSERT INTO rate VALUES(8, 15.20, '1000-abc-08',DATE '2018-08-01',DATE '2018-08-30', 'Sydney airport', 'Destination H','GBP',15,'Private Transfer',0);
 INSERT INTO rate VALUES(9, 15.20, '1000-abc-09',DATE '2018-09-01',DATE '2018-09-30', 'Sydney airport', 'Destination I','GBP',15,'Private Transfer',0);
+
+SET IDENTITY_INSERT rate ON;
+
+INSERT INTO rate(idrate, ratevalue, uniqueref, startdate,enddate,inactive,source,destination,currency,transfertime,vehicletype,IATA) VALUES(1, 15.20, '1000-abc-01','2018-01-01', '2018-01-30',0, 'Sydney airport', 'Destination A','AUD',15,'Shuttle Transfer','ADL');
+INSERT INTO rate(idrate, ratevalue, uniqueref, startdate,enddate,inactive,source,destination,currency,transfertime,vehicletype,IATA) VALUES(2, 15.20, '1000-abc-02','2018-02-01','2018-02-28',0, 'Brisbane International airport', 'Destination B','AUD',21,'Private Transfer','ADL');
+INSERT INTO rate(idrate, ratevalue, uniqueref, startdate,enddate,inactive,source,destination,currency,transfertime,vehicletype,IATA) VALUES(3, 15.20, '1000-abc-03','2018-03-01','2018-03-30',0, 'Paramatta airport', 'Destination C','AUD',32,'Shuttle Transfer','ADL');
+INSERT INTO rate(idrate, ratevalue, uniqueref, startdate,enddate,inactive,source,destination,currency,transfertime,vehicletype,IATA) VALUES(4, 15.20, '1000-abc-04','2018-04-01','2018-04-30',0, 'Adelaide airport', 'Destination D','AUD',43,'Shuttle Transfer','ADL');
+INSERT INTO rate(idrate, ratevalue, uniqueref, startdate,enddate,inactive,source,destination,currency,transfertime,vehicletype,IATA) VALUES(5, 15.20, '1000-abc-05','2018-05-01','2018-05-30',0, 'Alice Springs airport', 'Destination E','USD',16,'Shuttle Transfer','ADL');
+INSERT INTO rate(idrate, ratevalue, uniqueref, startdate,enddate,inactive,source,destination,currency,transfertime,vehicletype,IATA) VALUES(6, 15.20, '1000-abc-06','2018-06-01','2018-06-30',0, 'Brisbane Domestic airport', 'Destination F','USD',15,'Private Transfer','ADL');
+INSERT INTO rate(idrate, ratevalue, uniqueref, startdate,enddate,inactive,source,destination,currency,transfertime,vehicletype,IATA) VALUES(7, 15.20, '1000-abc-07','2018-07-01','2018-07-30',0, 'Cairns airport', 'Destination G','USD',15,'Private Transfer','ADL');
+INSERT INTO rate(idrate, ratevalue, uniqueref, startdate,enddate,inactive,source,destination,currency,transfertime,vehicletype,IATA) VALUES(8, 15.20, '1000-abc-08','2018-08-01','2018-08-30',0, 'Darwin airport', 'Destination H','GBP',15,'Private Transfer','ADL');
+INSERT INTO rate(idrate, ratevalue, uniqueref, startdate,enddate,inactive,source,destination,currency,transfertime,vehicletype,IATA) VALUES(9, 15.20, '1000-abc-09','2018-09-01','2018-09-30',0, 'Coolangatta airport', 'Destination I','GBP',15,'Private Transfer','ADL');

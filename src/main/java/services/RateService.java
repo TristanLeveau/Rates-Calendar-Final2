@@ -55,6 +55,31 @@ public class RateService {
     public Rate getRateById(Integer idRate) throws ClassNotFoundException { return rateDao.getRateById(idRate); }
 
     public void updateRate(Rate rate, Integer idRate) throws ClassNotFoundException {
+        if (rate==null){
+            throw new IllegalArgumentException("No rate to update...");
+        }
+        if (rate.getRate()==0) {
+            throw new IllegalArgumentException("Please enter rate value for the updated rate");
+        }
+
+        if (rate.getStartDate()==null) {
+            throw new IllegalArgumentException("Please enter a start date for the updated rate");
+        }
+        if (rate.getCurrency()==null) {
+            throw new IllegalArgumentException("Please enter a currency for the updated rate");
+        }
+        if (rate.getSource()==null) {
+            throw new IllegalArgumentException("Please enter a source for the updated rate");
+        }
+        if (rate.getDestination()==null) {
+            throw new IllegalArgumentException("Please enter a destination for the updated rate");
+        }
+        if (rate.getTransferTime()==0) {
+            throw new IllegalArgumentException("Please enter a transfer time for the updated rate");
+        }
+        if (rate.getVehicleType()==null) {
+            throw new IllegalArgumentException("Please enter a vehicle for the updated rate");
+        }
         rateDao.updateRate(rate,idRate);
     }
     }

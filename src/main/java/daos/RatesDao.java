@@ -14,9 +14,10 @@ public class RatesDao {
     public void addRate(Rate rate) throws ClassNotFoundException {
 
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        try (Connection connection = DriverManager.getConnection(url);
-                     //DataSourceProvider.getInstance().getDataSource().getConnection();
-             PreparedStatement statement = connection.prepareStatement("INSERT INTO rate(rate, startdate, enddate, source, destination, currency, transfertime,vehicletype,uniqueref) VALUES(?,?,?,?,?,?,?,?,?)")) {
+        try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
+
+                     //DriverManager.getConnection(url);
+             PreparedStatement statement = connection.prepareStatement("INSERT INTO rate(ratevalue, startdate, enddate, source, destination, currency, transfertime,vehicletype,uniqueref) VALUES(?,?,?,?,?,?,?,?,?)")) {
             statement.setDouble(1, rate.getRate());
             statement.setString(2, rate.getStartDate());
             statement.setString(3, rate.getEndDate());
@@ -37,8 +38,9 @@ public class RatesDao {
 
         List<Rate> rateList = new ArrayList<>();
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        try (Connection connection = DriverManager.getConnection(url);
-                     //DataSourceProvider.getInstance().getDataSource().getConnection();
+        try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
+                     //DriverManager.getConnection(url);
+                     //
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery("SELECT * FROM rate")) {
             while (resultSet.next()) {
@@ -69,8 +71,9 @@ public class RatesDao {
     public Rate getRateById(Integer idRate) throws ClassNotFoundException {
 
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        try (Connection connection = DriverManager.getConnection(url);
-                     //DataSourceProvider.getInstance().getDataSource().getConnection();
+        try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
+                     //DriverManager.getConnection(url);
+                     //
              PreparedStatement statement = connection.prepareStatement("SELECT * FROM rate WHERE idrate=?")) {
             statement.setInt(1, idRate);
             try (ResultSet resultSet = statement.executeQuery()) {
@@ -99,9 +102,10 @@ public class RatesDao {
     public void updateRate(Rate rate, Integer idRate) throws ClassNotFoundException {
 
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        try (Connection connection = DriverManager.getConnection(url);
-                     //DataSourceProvider.getInstance().getDataSource().getConnection();
-             PreparedStatement statement = connection.prepareStatement("UPDATE rate SET rate=?, startdate=?, enddate=?, source=?, destination=?, currency=?, transfertime=?,vehicletype=? WHERE idrate = ?")) {
+        try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
+                     //DriverManager.getConnection(url);
+                     //
+             PreparedStatement statement = connection.prepareStatement("UPDATE rate SET ratevalue=?, startdate=?, enddate=?, source=?, destination=?, currency=?, transfertime=?,vehicletype=? WHERE idrate = ?")) {
             statement.setDouble(1, rate.getRate());
             statement.setString(2, rate.getStartDate());
             statement.setString(3, rate.getEndDate());

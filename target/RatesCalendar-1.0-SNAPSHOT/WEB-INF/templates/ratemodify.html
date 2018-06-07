@@ -215,12 +215,12 @@
                         <td th:text="${rate.uniqueRef}"></td>
                         <td th:text="${rate.source}"></td>
                         <td th:text="${rate.destination}"></td>
-                        <td th:text="${rate.transferTime}"></td>
+                        <td th:text="${rate.transferTime}+'min'"></td>
                         <td th:text="${rate.currency}"></td>
                         <td th:text="${rate.startDate}"></td>
                         <td th:text="${rate.endDate}"></td>
                         <td th:text="${rate.vehicleType}"></td>
-                        <td th:text="${rate.rate}"></td>
+                        <td th:text="'$'+ ${rate.rate}"></td>
                         <td><button type="button" class="btn boutonvalider"><a th:href="'ratemodifyform?idrate='+${rate.idrate}">Modify</a></button></td>
                     </tr>
                     </tbody>

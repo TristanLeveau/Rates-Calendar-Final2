@@ -47,8 +47,8 @@ public class RateModifyFormServlet extends AbstractGenericServlet {
 
         HttpSession session = req.getSession();
 
-        String source = req.getParameter("destination");
-        String destination = req.getParameter("source");
+        String source = req.getParameter("source");
+        String destination = req.getParameter("destination");
         Double rateValue = Double.parseDouble(req.getParameter("rate"));
         int transferTime = Integer.parseInt(req.getParameter("transfertime"));
         String startDate = req.getParameter("startdate");
